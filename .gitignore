@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Experiment results (never commit raw data or figures)
+data/results/
+data/filler/corpus.txt
