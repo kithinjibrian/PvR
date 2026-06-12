@@ -1,0 +1,122 @@
+[
+  {
+    "id": "fact_001",
+    "category": "identifier",
+    "question": "What is the registration number of the blue fishing vessel?",
+    "answer": "FV-48291",
+    "answer_variants": ["FV-48291", "fv-48291", "FV 48291"],
+    "fact_sentence": "The blue fishing vessel carried registration number FV-48291 as per harbor records.",
+    "verified": true,
+    "notes": "Arbitrary alphanumeric — zero probability of appearing in training data"
+  },
+  {
+    "id": "fact_002",
+    "category": "measurement",
+    "question": "What is the recorded wingspan of the Thornfield specimen moth?",
+    "answer": "43.7 mm",
+    "answer_variants": ["43.7 mm", "43.7mm", "43.7"],
+    "fact_sentence": "The Thornfield specimen moth was measured to have a wingspan of exactly 43.7 mm under laboratory conditions.",
+    "verified": true,
+    "notes": "Invented species name + specific measurement"
+  },
+  {
+    "id": "fact_003",
+    "category": "named_entity",
+    "question": "Who was appointed as the chief cartographer of the Valdris Expedition?",
+    "answer": "Elara Sundvik",
+    "answer_variants": ["Elara Sundvik", "elara sundvik", "Sundvik"],
+    "fact_sentence": "Elara Sundvik was appointed as the chief cartographer of the Valdris Expedition in the spring of that year.",
+    "verified": true,
+    "notes": "Invented person + invented expedition — no training data overlap"
+  },
+  {
+    "id": "fact_004",
+    "category": "identifier",
+    "question": "What is the catalog number assigned to the Orwick mineral deposit?",
+    "answer": "MIN-7734-B",
+    "answer_variants": ["MIN-7734-B", "min-7734-b", "MIN 7734 B"],
+    "fact_sentence": "The Orwick mineral deposit was assigned catalog number MIN-7734-B by the regional geological survey office.",
+    "verified": true,
+    "notes": "Invented location + catalog style identifier"
+  },
+  {
+    "id": "fact_005",
+    "category": "measurement",
+    "question": "What was the boiling point recorded for Compound ZX-19 in the Harwell trials?",
+    "answer": "217.4 degrees Celsius",
+    "answer_variants": ["217.4 degrees Celsius", "217.4°C", "217.4 C", "217.4"],
+    "fact_sentence": "Compound ZX-19 exhibited a boiling point of 217.4 degrees Celsius during the Harwell trials conducted under standard atmospheric pressure.",
+    "verified": true,
+    "notes": "Invented compound and trial name"
+  },
+  {
+    "id": "fact_006",
+    "category": "causal",
+    "question": "What caused the collapse of the Aldenmoor granary in the 1887 inspection report?",
+    "answer": "beetle infestation in the eastern support beams",
+    "answer_variants": ["beetle infestation in the eastern support beams", "beetle infestation", "eastern support beams"],
+    "fact_sentence": "The 1887 inspection report attributed the collapse of the Aldenmoor granary to a beetle infestation in the eastern support beams.",
+    "verified": true,
+    "notes": "Invented location + causal fact with specific detail"
+  },
+  {
+    "id": "fact_007",
+    "category": "identifier",
+    "question": "What is the serial number of the Kressen telescope donated to the Pelworth Observatory?",
+    "answer": "KT-00392",
+    "answer_variants": ["KT-00392", "kt-00392", "KT 00392"],
+    "fact_sentence": "The Kressen telescope donated to the Pelworth Observatory bears serial number KT-00392 engraved on its base plate.",
+    "verified": true,
+    "notes": "Invented brand + observatory + serial"
+  },
+  {
+    "id": "fact_008",
+    "category": "named_entity",
+    "question": "Who negotiated the Brindlewood Trade Agreement on behalf of the northern merchants?",
+    "answer": "Casimir Prohl",
+    "answer_variants": ["Casimir Prohl", "casimir prohl", "Prohl"],
+    "fact_sentence": "Casimir Prohl represented the northern merchants during the negotiations that produced the Brindlewood Trade Agreement.",
+    "verified": true,
+    "notes": "Invented person + invented agreement"
+  },
+  {
+    "id": "fact_009",
+    "category": "measurement",
+    "question": "What depth was recorded at Station 14 of the Mareveld oceanographic survey?",
+    "answer": "3,847 metres",
+    "answer_variants": ["3,847 metres", "3847 metres", "3,847m", "3847m", "3847"],
+    "fact_sentence": "Station 14 of the Mareveld oceanographic survey recorded a seafloor depth of 3,847 metres using acoustic sonar.",
+    "verified": true,
+    "notes": "Invented survey + station + precise depth"
+  },
+  {
+    "id": "fact_010",
+    "category": "causal",
+    "question": "Why was the Forsgate postal route suspended in the winter of 1923?",
+    "answer": "flooding of the Crellen Bridge",
+    "answer_variants": ["flooding of the Crellen Bridge", "Crellen Bridge flooding", "Crellen Bridge"],
+    "fact_sentence": "The Forsgate postal route was suspended in the winter of 1923 due to the flooding of the Crellen Bridge following heavy seasonal rains.",
+    "verified": true,
+    "notes": "Invented route + causal event with location detail"
+  },
+  {
+    "id": "fact_011",
+    "category": "identifier",
+    "question": "What is the patent number filed for the Dunwick water-filtration membrane?",
+    "answer": "GB-1902-4471",
+    "answer_variants": ["GB-1902-4471", "gb-1902-4471", "1902-4471"],
+    "fact_sentence": "The Dunwick water-filtration membrane was protected under patent number GB-1902-4471 following its successful demonstration.",
+    "verified": true,
+    "notes": "Invented product + invented patent number style"
+  },
+  {
+    "id": "fact_012",
+    "category": "named_entity",
+    "question": "Who was the first warden of the Tarwick Nature Reserve?",
+    "answer": "Meredith Colan",
+    "answer_variants": ["Meredith Colan", "meredith colan", "Colan"],
+    "fact_sentence": "Meredith Colan served as the first warden of the Tarwick Nature Reserve from its founding until her retirement.",
+    "verified": true,
+    "notes": "Invented person + invented reserve"
+  }
+]
