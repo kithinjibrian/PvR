@@ -97,6 +97,12 @@ No source code written yet. pyproject.toml does not exist yet.
 
 ---
 
+## SESSION 3 — 2026-06-12 — Lost-in-the-Middle Implementation — open
+
+Branch: claude/brave-hopper-l2mf53
+
+---
+
 ## NEXT SESSION START POINT
 
 Before anything else: append a new session entry to CONTEXT.md with state `open` and the current branch name. Commit it. Do not read any other file or write any code until this is done.
