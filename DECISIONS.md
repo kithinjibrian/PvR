@@ -12,74 +12,76 @@ Rules:
 
 ## OPEN — Requires human input before implementation
 
-### DECISION-001 — Which LLM providers to benchmark
-
-**Status:** open
-**Raised:** 2026-06-12 — Session 1
-**Resolved by:** human
-**Blocks:** utils/api.py, any experiment that calls an LLM
-
-**Question:** Which LLM providers should be included in the primacy vs. recency benchmarks?
-
-**Options:**
-- A) Anthropic only (Claude models) — simpler to start, single SDK
-- B) Anthropic + OpenAI — broader comparison, two SDKs to maintain
-- C) Anthropic + OpenAI + open-source (via Ollama or HuggingFace) — widest coverage, most complexity
-
-**Notes:** The answer determines how the API wrapper in utils/api.py is designed. Starting with A and expanding later is safe because the abstraction can be added incrementally.
-
----
-
-### DECISION-002 — Dataset / benchmark for retrieval tasks
-
-**Status:** open
-**Raised:** 2026-06-12 — Session 1
-**Resolved by:** human
-**Blocks:** src/utils/data.py, any retrieval experiment
-
-**Question:** Which dataset or benchmark should be used to test primacy vs. recency retrieval?
-
-**Options:**
-- A) Synthetic "needle in a haystack" — simple to generate, fully controlled, widely used in LLM evals
-- B) SCROLLS / NarrativeQA — real documents, more ecologically valid but harder to control position
-- C) Custom dataset built from research papers or Wikipedia — full control over content and position
-
-**Notes:** Option A is the standard approach for this type of experiment and easiest to implement. Options B/C are better for downstream publication claims.
-
----
-
-### DECISION-003 — Async vs sync API calls in experiment runners
-
-**Status:** open
-**Raised:** 2026-06-12 — Session 1
-**Resolved by:** human
-**Blocks:** src/experiments/, src/utils/api.py
-
-**Question:** Should the experiment runners use async API calls (asyncio + httpx) or synchronous calls with threading?
-
-**Options:**
-- A) Synchronous with threading (ThreadPoolExecutor) — simpler code, easier to debug, good for I/O-bound LLM calls
-- B) Async (asyncio) — more idiomatic for I/O-bound work, but adds complexity to every caller
-- C) Synchronous, single-threaded — simplest possible, acceptable for small experiments
-
-**Notes:** For research experiments that may run hundreds of API calls, parallelism matters for wall-clock time. Option A is the pragmatic default unless the team has strong async experience.
+No open decisions.
 
 ---
 
 ## DEFERRED — Acknowledged, not yet needed
 
-### DECISION-004 — Results storage format
-
-**Status:** deferred
-**Raised:** 2026-06-12 — Session 1
-**Revisit when:** First experiment produces results that need to be stored and compared across runs
-
-**Question:** Should experiment results be stored as JSON, CSV, Parquet, or in a lightweight database (SQLite)?
-
-**Notes:** JSON is fine for initial work. Revisit when result sets are large enough that loading them into pandas becomes slow.
+No deferred decisions.
 
 ---
 
 ## RESOLVED
 
-No resolved decisions yet.
+### DECISION-001 — Which LLM providers to benchmark
+
+**Status:** resolved
+**Raised:** 2026-06-12 — Session 1
+**Resolved:** 2026-06-12 — Session 2
+
+**Question:** Which LLM providers should be included in the primacy vs. recency benchmarks?
+
+**Outcome:** Anthropic only (Claude claude-sonnet-4-6) for v1. Multi-model support (GPT-4o, Gemini) is a documented v2 extension requiring abstraction of the API call in runner.py behind a `call_model(model, prompt)` interface.
+
+**Rationale:** Spec explicitly scopes v1 to Claude only to establish a clean baseline. Multi-model is the first listed extension point.
+
+**Copied to MEMORY.md:** yes
+
+---
+
+### DECISION-002 — Dataset / benchmark for retrieval tasks
+
+**Status:** resolved
+**Raised:** 2026-06-12 — Session 1
+**Resolved:** 2026-06-12 — Session 2
+
+**Question:** Which dataset or benchmark should be used to test primacy vs. recency retrieval?
+
+**Outcome:** Synthetic "needle in a haystack" — custom `facts.json` of 10+ manually verified facts (categories: identifier, measurement, named_entity, causal) injected into Wikipedia filler prose. Each fact answer must be non-inferable without reading the injected sentence.
+
+**Rationale:** Spec defines a bespoke facts.json format with strict non-inferability requirements. Wikipedia prose used for filler (astronomy, mycology, medieval history, marine biology, classical music — topics with zero overlap with fact specifics).
+
+**Copied to MEMORY.md:** yes
+
+---
+
+### DECISION-003 — Async vs sync API calls in experiment runners
+
+**Status:** resolved
+**Raised:** 2026-06-12 — Session 1
+**Resolved:** 2026-06-12 — Session 2
+
+**Question:** Should the experiment runners use async API calls or synchronous calls?
+
+**Outcome:** Synchronous, single-threaded with rate limiting. `CONFIG["requests_per_minute"]` controls throughput. Exponential backoff on 429 errors. Results written to disk after each trial before proceeding.
+
+**Rationale:** Spec's runner.py design is synchronous and sequential. Parallelism is unnecessary given the rate limit constraint (50 req/min) and the priority of result durability over speed.
+
+**Copied to MEMORY.md:** yes
+
+---
+
+### DECISION-004 — Results storage format
+
+**Status:** resolved
+**Raised:** 2026-06-12 — Session 1
+**Resolved:** 2026-06-12 — Session 2
+
+**Question:** Should experiment results be stored as JSON, CSV, Parquet, or SQLite?
+
+**Outcome:** One JSON file per trial in `data/results/raw/<trial_id>.json`. Aggregated to CSV via `src/analysis/aggregate.py` when analysis is run. Schema is fixed in the spec.
+
+**Rationale:** Per-trial JSON files maximize crash resilience (at most one trial lost per crash) and make `--resume` trivial to implement (check if file exists). Aggregation to CSV happens at analysis time, not during the run.
+
+**Copied to MEMORY.md:** yes
