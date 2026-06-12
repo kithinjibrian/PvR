@@ -56,9 +56,44 @@ None — no source code exists yet.
 
 ---
 
-## SESSION 2 — 2026-06-12 — Spec Integration — open
+## SESSION 2 — 2026-06-12 — Spec Integration — closed
 
 Branch: claude/adoring-euler-ike61n
+
+### WHAT WAS DONE
+
+Integrated the full experiment spec into the context system. Stored the spec as
+`docs/specs/lost-in-the-middle.md` (canonical source of truth). Created
+`PRPs/lost-in-the-middle.md` (implementation checklist). Resolved all four open
+decisions (DECISION-001 through DECISION-004) in DECISIONS.md. Updated MEMORY.md
+with all seven architectural decisions derived from the spec.
+
+### FILES CREATED OR MODIFIED
+
+docs/specs/lost-in-the-middle.md   — Full technical spec (module interfaces, data contracts, implementation order)
+PRPs/lost-in-the-middle.md         — Implementation checklist and test requirements
+DECISIONS.md                       — All four decisions moved to RESOLVED
+MEMORY.md                          — Seven architectural decisions recorded; NEXT SESSION START POINT updated
+CHANGELOG.md                       — Unreleased section updated
+
+### TESTS WRITTEN
+
+None — no source code yet; test cases are listed in PRPs/lost-in-the-middle.md.
+
+### DECISIONS MADE
+
+- DECISION-001 resolved: Claude only (claude-sonnet-4-6) for v1
+- DECISION-002 resolved: Synthetic needle-in-a-haystack with custom facts.json
+- DECISION-003 resolved: Synchronous single-threaded runner with rate limiting
+- DECISION-004 resolved: Per-trial JSON files in data/results/raw/
+
+### PENDING DECISIONS OPENED
+
+None.
+
+### STILL OPEN AT CLOSE
+
+No source code written yet. pyproject.toml does not exist yet.
 
 ---
 
@@ -66,9 +101,13 @@ Branch: claude/adoring-euler-ike61n
 
 Before anything else: append a new session entry to CONTEXT.md with state `open` and the current branch name. Commit it. Do not read any other file or write any code until this is done.
 
-Then read CLAUDE.md, MEMORY.md, DECISIONS.md, and CONTEXT.md in that order.
-Confirm you've read them by summarizing: current stack, last thing built, any open decisions blocking today's work, and what we're doing this session.
+Then read CLAUDE.md, MEMORY.md, DECISIONS.md, and CONTEXT.md in that order. Then read `docs/specs/lost-in-the-middle.md` and `PRPs/lost-in-the-middle.md` in full.
 
-Three open decisions must be resolved before writing experiment code: DECISION-001 (which providers), DECISION-002 (which dataset), DECISION-003 (async vs sync). Present these to the user for resolution before writing any PRP for the core experiments.
+All decisions are resolved. The PRP is approved. Begin implementation at Step 1 of the plan in MEMORY.md:
 
-First task once decisions are resolved: write a PRP for the project scaffold (pyproject.toml, src/ directory structure, config.py, utils/api.py wrapper).
+1. Create `pyproject.toml` (use the exact content from the spec §Dependencies)
+2. Run `uv sync --extra dev`
+3. Create `data/facts/facts.json` with 10+ manually verified facts following the spec schema
+4. Implement `scripts/02_validate_facts.py` and confirm it passes
+
+Write failing tests before implementing each module. Read `docs/CODE_STYLE.md` before writing any function.

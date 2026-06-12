@@ -12,6 +12,9 @@ Never deleted. Older entries are never modified.
 - Context engineering system: CLAUDE.md, MEMORY.md, CONTEXT.md, DECISIONS.md, .llmignore
 - PRP templates: PRPs/TEMPLATE.md, PRPs/DISCOVERY.md
 - Code style guide: docs/CODE_STYLE.md
+- Technical spec: docs/specs/lost-in-the-middle.md — full design and data contracts for the positional retrieval experiment
+- PRP: PRPs/lost-in-the-middle.md — implementation checklist and test requirements
+- Resolved all four open architectural decisions (provider, dataset, concurrency model, results format)
 
 ---
 
