@@ -1,0 +1,29 @@
+# .llmignore
+# Files and directories the AI must never touch.
+# Keep this in sync with the PROTECTED FILES section in CLAUDE.md.
+
+# Environment and secrets
+.env
+.env.*
+.env.local
+
+# Dependency lockfiles — managed by uv, not the AI
+uv.lock
+poetry.lock
+pip-tools/*.txt
+
+# Build output — generated, not source
+dist/
+build/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data and results — never committed, never modified by AI
+data/
+results/
+
+# License
+LICENSE
