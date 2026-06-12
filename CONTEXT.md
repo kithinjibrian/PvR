@@ -54,6 +54,14 @@ None — no source code exists yet.
 
 ---
 
+---
+
+## SESSION 2 — 2026-06-12 — Spec Integration — open
+
+Branch: claude/adoring-euler-ike61n
+
+---
+
 ## NEXT SESSION START POINT
 
 Before anything else: append a new session entry to CONTEXT.md with state `open` and the current branch name. Commit it. Do not read any other file or write any code until this is done.
