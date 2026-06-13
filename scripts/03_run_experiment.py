@@ -42,7 +42,7 @@ CONFIG = {
     "context_lengths": [16384, 65536],
     "facts_per_cell": 10,
     "trials_per_fact": 1,
-    "model": "claude-sonnet-4-6",
+    "model": "claude-haiku-4-5",
     "max_tokens": 100,
     "temperature": 0,
     "filler_path": "data/filler/corpus.txt",
